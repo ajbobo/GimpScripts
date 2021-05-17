@@ -8,10 +8,11 @@
   (gimp-context-push)
 
   (let* ((filename (car (gimp-image-get-filename img)))
+         (updatedfile (string-append (substring filename 0 (- (string-length filename) 3)) "png"))
         )
 
     (plug-in-despeckle 1 img drawable radius type black white)
-    (file-png-save-defaults 0 img drawable filename filename)
+    (file-png-save-defaults 0 img drawable updatedfile updatedfile)
   )
 
 
